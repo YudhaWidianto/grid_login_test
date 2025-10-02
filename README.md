@@ -4,7 +4,7 @@ This mini project showcases my ability to run login test case scripts in paralle
 2. Negative username test
 3. Negative password test
 
-I configured one hub and three nodes with different ports from the same machine. The objective was to reduce tests execution time by distributing the tests across multiple nodes using Selenium Grid.
+I configured one hub and one node from the same machine. The objective was to reduce tests execution time by running the tests in parallel using Selenium Grid.
 ## Prerequisites:
 - Git installed
 - Java installed
@@ -34,19 +34,11 @@ I configured one hub and three nodes with different ports from the same machine.
    java -jar selenium-server-4.35.0.jar hub
    ```
 4. Open [http://localhost:4444](http://localhost:4444) to see the Selenium Grid UI. Note that there are no registered nodes yet.
-5. Open three new terminal window, and start a node on each window. For the first node:
+5. Open a new terminal window, and start a node.
    ```
-   java -jar selenium-server-4.35.0.jar node --port 5555
+   java -jar selenium-server-4.35.0.jar node
    ```
-   For the second node:
-   ```
-   java -jar selenium-server-4.35.0.jar node --port 5556
-   ```
-   For the third node:
-   ```
-   java -jar selenium-server-4.35.0.jar node --port 5557
-   ```
-   Now you should see three nodes in the Grid UI.
+   Now you should see a node has been added in the Grid UI. My node's maximum concurrency is 4. Since there are only 3 tests, we will run the tests in parallel in the same node.
 6. In order to run the tests, open another terminal window, change the current directory:
    ```
    cd grid_login_test
@@ -57,4 +49,6 @@ I configured one hub and three nodes with different ports from the same machine.
    ```
    This tells `pytest-xdist` to run the test in `automat_grid` folder in 3 parallel threads. Three Chrome instances should run in parallel at this point.
 ## Result and Impact
-With Selenium Grid, I was able to run the test execution time from 13.97s to 11.70s by distributing the tests in parallel across 3 nodes. This improved test efficiency and might allow quicker feedback in a development cycle.
+By running the tests in parallel with Selenium Grid, I was able to run the tests in 11.38s instead of 14.84s by running the tests in sequence with command `pytest automat_grid/`.
+## Notes
+Since all tests run on the same browser and OS, and the tests didn't hit maximum concurrency of the node, I don't need to run the tests in multiple nodes for this mini project. To increase my skill, I plan to run the tests in Chrome and Firefox browsers using two nodes.
