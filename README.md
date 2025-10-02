@@ -51,4 +51,13 @@ I configured one hub and one node from the same machine. The objective was to re
 ## Result and Impact
 By running the tests in parallel with Selenium Grid, I was able to run the tests in 11.38s instead of 14.84s by running the tests in sequence with command `pytest automat_grid/`.
 ## Notes
-Since all tests run on the same browser and OS, and the tests didn't hit maximum concurrency of the node, I don't need to run the tests in multiple nodes for this mini project. To increase my skill, I plan to run the tests in Chrome and Firefox browsers using two nodes.
+Since all tests run on the same browser and OS, and the tests didn't hit maximum concurrency of the node, I don't need to run the tests in multiple nodes for this mini project. To increase my skill, I plan to configure and run the tests in Chrome and Firefox browsers using two different nodes.
+## Screenshots
+- Selenium Grid UI after a node is added:
+  ![Grid UI](images/Grid_UI.JPG)
+- Sessions tab on Selenium Grid UI shows all running sessions:
+  ![Grid UI Sessions](images/Grid_UI_run.JPG)
+- Tests result after running `pytest -n 3 automat_grid/` (running three tests in parallel):
+  ![Three tests in parallel](images/CMD_three.JPG)
+- Tests result after running `pytest automat_grid/` (running three tests in sequence):
+  ![Three tests in sequence](images/CMD_one.JPG)
