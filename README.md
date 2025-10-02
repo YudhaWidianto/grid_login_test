@@ -2,7 +2,8 @@
 This mini project showcases my ability to run login test case scripts in parallel using Selenium Grid. There are three test cases in this mini project:
 1. Positive login test
 2. Negative username test
-3. Negative password test\
+3. Negative password test
+
 I configured one hub and three nodes with different ports from the same machine. The objective was to reduce tests execution time by distributing the tests across multiple nodes using Selenium Grid.
 ## Prerequisites:
 - Git installed
